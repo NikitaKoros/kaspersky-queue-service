@@ -7,11 +7,11 @@ import (
 )
 
 type Config struct {
-	Workers       int
-	QueueSize     int
-	BaseBackoff   time.Duration
-	MaxBackoff    time.Duration
-	ServerAddr    string
+	Workers     int
+	QueueSize   int
+	BaseBackoff time.Duration
+	MaxBackoff  time.Duration
+	ServerAddr  string
 }
 
 func LoadConfig() *Config {
@@ -39,3 +39,4 @@ func getEnvAsInt(key string, defaultValue int) int {
 	}
 	return defaultValue
 }
+

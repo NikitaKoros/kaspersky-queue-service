@@ -90,7 +90,7 @@ func writeErrorResponce(w http.ResponseWriter, statusCode int, message string) {
 		"error": message,
 	}
 
-	enc := json.NewEncoder(w) 
+	enc := json.NewEncoder(w)
 	enc.SetEscapeHTML(false)
 	enc.Encode(errorResponse)
 }

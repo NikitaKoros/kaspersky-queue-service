@@ -87,10 +87,10 @@ func (c *Controller) EnqueueTask(req EnqueueRequest) (string, error) {
 func (c *Controller) GetHealthStats() (map[store.TaskState]int, QueueStats) {
 	taskStats := c.statesStore.GetStats()
 	queueStats := QueueStats{
-		Size: c.taskQueue.Size(),
+		Size:     c.taskQueue.Size(),
 		Capacity: c.taskQueue.Capacity(),
 	}
-	
+
 	return taskStats, queueStats
 }
 

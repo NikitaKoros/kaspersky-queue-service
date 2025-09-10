@@ -86,14 +86,14 @@ func TestCoordinator_ShutdownWithTimeout_CompletesWithinTimeout(t *testing.T) {
 	}
 
 	needLog := "Graceful shutdown completed successfuly"
-	found := false 
+	found := false
 	for _, l := range logs {
 		if strings.Contains(l, needLog) {
 			found = true
 			break
 		}
 	}
-	
+
 	if !found {
 		t.Error("Expected log message 'Graceful shutdown completed successfuly' not found")
 	}

@@ -95,7 +95,7 @@ func (wp *WorkerPool) processTask(task *Task, workerID int) {
 
 	wp.store.UpdateTaskState(task.ID, store.TaskStateRunning, "")
 
-	processingTime := time.Duration(100+rand.Intn(400)) * time.Millisecond 
+	processingTime := time.Duration(100+rand.Intn(400)) * time.Millisecond
 
 	select {
 	case <-time.After(processingTime):
