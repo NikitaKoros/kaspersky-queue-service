@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/NikitaKoros/queue-serivce/internal/queue"
-	"github.com/NikitaKoros/queue-serivce/internal/shutdown"
-	"github.com/NikitaKoros/queue-serivce/internal/store"
+	"github.com/NikitaKoros/queue-service/internal/queue"
+	"github.com/NikitaKoros/queue-service/internal/shutdown"
+	"github.com/NikitaKoros/queue-service/internal/store"
 )
 
 type ControllerProvider interface {
