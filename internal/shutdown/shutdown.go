@@ -13,7 +13,7 @@ import (
 
 type CoordinatorProvider interface {
 	IsAccepting() bool
-	Shutdown()
+	ShutdownWithTimeout(time.Duration, ...func(context.Context))
 }
 
 type Coordinator struct {
@@ -42,7 +42,7 @@ func (c *Coordinator) IsAccepting() bool {
 
 func (c *Coordinator) initiateShutdown() {
 	c.shutDownOnce.Do(func() {
-		log.Println("Initiating gracefull shutdown...")
+		log.Println("Initiating graceful shutdown...")
 
 		c.accepting.Store(false)
 		log.Println("Stopped accepting new tasks...")
