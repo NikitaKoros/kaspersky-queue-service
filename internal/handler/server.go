@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/NikitaKoros/queue-serivce/internal/controller"
+	"github.com/NikitaKoros/queue-service/internal/controller"
 )
 
 type Server struct {

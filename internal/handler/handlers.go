@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/NikitaKoros/queue-serivce/internal/controller"
+	"github.com/NikitaKoros/queue-service/internal/controller"
 )
 
 func HandleEnqueue(ctrl controller.ControllerProvider) http.HandlerFunc {
@@ -49,12 +49,12 @@ func HandleEnqueue(ctrl controller.ControllerProvider) http.HandlerFunc {
 				return
 			}
 		}
-		
-		response := controller.EnqueueResponse {
+
+		response := controller.EnqueueResponse{
 			Message: "Task enqueued successfully",
-			TaskID: taskID,
+			TaskID:  taskID,
 		}
-		
+
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusAccepted)
 		json.NewEncoder(w).Encode(response)
@@ -67,15 +67,15 @@ func HandleHealth(ctrl controller.ControllerProvider) http.HandlerFunc {
 			writeErrorResponce(w, http.StatusMethodNotAllowed, "Method not allowed")
 			return
 		}
-		
+
 		taskStats, queueStats := ctrl.GetHealthStats()
-		
+
 		response := controller.HealthResponse{
 			Status: "ok",
-			Stats: taskStats,
-			Queue: queueStats,
+			Stats:  taskStats,
+			Queue:  queueStats,
 		}
-		
+
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusAccepted)
 		json.NewEncoder(w).Encode(response)
@@ -90,5 +90,7 @@ func writeErrorResponce(w http.ResponseWriter, statusCode int, message string) {
 		"error": message,
 	}
 
-	json.NewEncoder(w).Encode(errorResponse)
+	enc := json.NewEncoder(w) 
+	enc.SetEscapeHTML(false)
+	enc.Encode(errorResponse)
 }
